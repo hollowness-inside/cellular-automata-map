@@ -45,7 +45,7 @@ class MapGen:
             for dx in range(-1, 2):
                 if dx == dy == 0:
                     continue
-                
+
                 if self._get(x+dx, y+dy) == 1:
                     count += 1
 
@@ -54,7 +54,7 @@ class MapGen:
     def _get(self, x: int, y: int) -> int:
         if not ((0 < x < self.width) and (0 < y < self.height)):
             return 1
-        
+
         return self.array[y * self.width + x]
 
 
@@ -65,11 +65,3 @@ def mapgen(size: Tuple[int, int],
     """Wrapper for the MapGen class. Generates a new map and returns its data."""
     mg = MapGen(size, rand_seed, ratio, smooth)
     return mg.generate()
-
-if __name__ == '__main__':
-    data = mapgen((64, 64), smooth=5)
-    from PIL import Image as i
-    # print(data)
-    a = i.new("1", (64, 64))
-    a.putdata(data)
-    a.save('map.png')
