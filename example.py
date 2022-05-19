@@ -1,8 +1,8 @@
 from PIL import Image
 
-from mapgen import mapgen
+from mapgen import generate
 
-data = mapgen((64, 64), smooth=5)
+data = generate((64, 64), smooth=5)
 
 img = Image.new("1", (64, 64))
 img.putdata(data)
